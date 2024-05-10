@@ -1,16 +1,13 @@
 import './LoginPage.css';
-import { startFirebase } from '../../../firebase';
 import firebase from 'firebase/compat/app';
 import { useState } from 'react';
-
+import { firebaseApp } from '../../../firebase';
 
 
 export const LoginPage = () => {
   const [signInHidden, setSignInHidden] = useState(true);
   const [signOutHidden, setSignOutHidden] = useState(false);
   const [loggedinUser, setLoggedinUser] = useState('');
-  // initialie firebase
-  startFirebase();
   
   // set up auth
   const auth = firebase.auth();
