@@ -1,0 +1,26 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  gap: 0.5em;
+  background-color: #e0fbfc;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.form button {
+  margin-top: 2rem;
+}
+
+.form h3 {
+  color: #ee6c4d
+}
+
+.form input {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  width: 100%;
+}
+
+.form label {
+  font-size: 0.8em;
+}
