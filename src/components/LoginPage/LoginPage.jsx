@@ -4,10 +4,10 @@ import { useState } from 'react';
 import { firebaseApp } from '../../../firebase';
 
 
-export const LoginPage = () => {
+export const LoginPage = ({currentUser, setCurrentUser}) => {
   const [signInHidden, setSignInHidden] = useState(true);
   const [signOutHidden, setSignOutHidden] = useState(false);
-  const [loggedinUser, setLoggedinUser] = useState('');
+  // const [loggedinUser, setCurrentUser] = useState('');
   
   // set up auth
   const auth = firebase.auth();
@@ -19,12 +19,12 @@ export const LoginPage = () => {
           // signed in
           setSignInHidden(false);
           setSignOutHidden(true);
-          setLoggedinUser(user);
+          setCurrentUser(user);
       } else {
           // not signed in
           setSignInHidden(true);
           setSignOutHidden(false);
-          setLoggedinUser('')
+          setCurrentUser('')
       }
   });
 
@@ -52,7 +52,7 @@ export const LoginPage = () => {
         <h1>Welcome</h1>
         <div 
           id="userDetails">
-            {loggedinUser ? `${loggedinUser.displayName} - ${loggedinUser.uid}` : ''}
+            {currentUser ? `${currentUser.displayName} - ${currentUser.uid}` : ''}
         </div>
         <button 
           id="signOutBtn"
