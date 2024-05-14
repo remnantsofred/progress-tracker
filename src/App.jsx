@@ -3,6 +3,7 @@ import { LoginPage } from './components/LoginPage/LoginPage'
 import { MilestonesPage } from './components/MilestonesPage/MilestonesPage'
 import {  useState } from 'react';
 import { AuthContext } from './AuthContext';
+import MilestoneForm from './components/MilestoneForm/MilestoneForm';
 
 function App() {
   const [currentUser, setCurrentUser] = useState('');
@@ -12,6 +13,7 @@ function App() {
       <AuthContext.Provider value={currentUser}>
         <LoginPage currentUser={currentUser} setCurrentUser={setCurrentUser}/>
         { currentUser && <MilestonesPage />}
+        { currentUser && <MilestoneForm />}
       </AuthContext.Provider >
     </>
   )

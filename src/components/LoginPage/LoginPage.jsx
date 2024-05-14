@@ -1,13 +1,11 @@
 import './LoginPage.css';
 import firebase from 'firebase/compat/app';
 import { useState } from 'react';
-import { firebaseApp } from '../../../firebase';
 
 
-export const LoginPage = ({currentUser, setCurrentUser, children}) => {
+export const LoginPage = ({currentUser, setCurrentUser}) => {
   const [signInHidden, setSignInHidden] = useState(true);
   const [signOutHidden, setSignOutHidden] = useState(false);
-  // const [loggedinUser, setCurrentUser] = useState('');
   
   // set up auth
   const auth = firebase.auth();
@@ -30,18 +28,19 @@ export const LoginPage = ({currentUser, setCurrentUser, children}) => {
 
 
   return (
-    <div className='main-page'>
+    <div className='login-page'>
       <section 
         id="whenSignedOut" 
         hidden={signOutHidden}>
-
-        <h1>Login</h1>
-        <button 
-          id="signInBtn"
-          onClick={() => auth.signInWithPopup(provider)}
-          >
-          Sign in with Google
-        </button>
+        <div className='login-page-container'>
+          <h1>Login</h1>
+          <button 
+            id="signInBtn"
+            onClick={() => auth.signInWithPopup(provider)}
+            >
+            Sign in with Google
+          </button>
+        </div>
   
       </section>
     
@@ -49,20 +48,21 @@ export const LoginPage = ({currentUser, setCurrentUser, children}) => {
         id="whenSignedIn" 
         hidden={signInHidden}>
 
-        <h1>Welcome</h1>
-        <div 
-          id="userDetails">
-            {currentUser ? `${currentUser.displayName} - ${currentUser.uid}` : ''}
+        <div className='login-page-container'>
+          <h1>Progress Tracker</h1>
+          <div 
+            id="userDetails">
+              {currentUser ? `${currentUser.displayName} - ${currentUser.uid}` : ''}
+          </div>
+          <button 
+            id="signOutBtn"
+            onClick={() => auth.signOut()}
+            >
+            Sign Out
+          </button>
         </div>
-        <button 
-          id="signOutBtn"
-          onClick={() => auth.signOut()}
-          >
-          Sign Out
-        </button>
     
       </section>
-      { children }
     </div>
   )
 }

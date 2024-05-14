@@ -1,4 +1,5 @@
 import firebase from 'firebase/compat/app';
+import { getFirestore } from 'firebase/firestore';
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
 
@@ -16,3 +17,4 @@ const config = {
 
 // initialie firebase and make available via import
 export const firebaseApp = firebase.initializeApp(config)
+export const db = getFirestore(firebaseApp)

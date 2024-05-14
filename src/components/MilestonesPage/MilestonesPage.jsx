@@ -1,13 +1,9 @@
 import './MilestonesPage.css';
-import { getFirestore, collection, query, where, onSnapshot } from "firebase/firestore";
-import { firebaseApp } from '../../../firebase';
+import { collection, query, where, onSnapshot } from "firebase/firestore";
+import { db } from '../../../firebase';
 import Countdown from '../Countdown/Countdown';
-import MilestoneForm from '../MilestoneForm/MilestoneForm';
 import { AuthContext } from '../../AuthContext';
 import { useContext, useState } from 'react';
-
-
-const db = getFirestore(firebaseApp);
 
 
 export const MilestonesPage = () => {
@@ -25,7 +21,7 @@ export const MilestonesPage = () => {
   
   return (
     <div className='milestones-page'>
-      <MilestoneForm db={db} ></MilestoneForm>
+      <h2>Milestones</h2>
       <ul>
           { userMilestones && userMilestones.map((milestone, idx)=> 
             { return (<Countdown
