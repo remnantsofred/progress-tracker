@@ -21,21 +21,21 @@ const getTimeLeft = (date) => {
 
 
 const Countdown = ({milestone}) => {
-  const [timeLeft, setTimeLeft] = useState(()=> getTimeLeft(milestone.data().date));  
+  const [timeLeft, setTimeLeft] = useState(()=> getTimeLeft(milestone.date));  
   
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(getTimeLeft(milestone.data().date))
+      setTimeLeft(getTimeLeft(milestone.date))
     }, 1000)
     return ()=> {
       clearInterval(timer)
     }
-  }, [milestone.data().date]);
+  }, [milestone.date]);
 
   return (
     <div className="countdown">
-      {timeLeft[0] === 'future' && <h2>Countdown until {milestone.data().name}</h2>}
-      {timeLeft[0] === 'past' && <h2>Time since {milestone.data().name}</h2>}
+      {timeLeft[0] === 'future' && <h2>Countdown until {milestone.name}</h2>}
+      {timeLeft[0] === 'past' && <h2>Time since {milestone.name}</h2>}
       <div className="content">
         {Object.entries(timeLeft[1]).map(el => {
           const label = el[0];
