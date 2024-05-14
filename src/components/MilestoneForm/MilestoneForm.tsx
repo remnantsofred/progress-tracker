@@ -1,21 +1,24 @@
 import './MilestoneForm.css'
-import { getFirestore } from "firebase/firestore";
-import { firebaseApp } from '../../../firebase';
-import { useState } from 'react';
-import "firebase/firestore";
+import { doc, setDoc, collection } from "firebase/firestore";
+import { db } from '../../../firebase';
+import { useState,useContext } from 'react';
+import { AuthContext } from '../../AuthContext';
 
 
-const MilestoneForm = ({db}) => {
+
+const MilestoneForm = () => {
   const [name, setName] = useState();
   const [date, setDate] = useState();
-  const createMilestone = (e) => {
-    e.preventdefault();
-    console.log(name, 'name', date, 'date')
-    db.collection.milestones.add({
-      name,
-      date
-    })
+  const currentUser = useContext(AuthContext);
+
+  const createMilestone = () => {
+    const formattedDate = new Date(date).getTime()
+    // to do: fix date?
+    const milestoneRef = doc(collection(db, 'milestones'));
+    setDoc(milestoneRef, {'name': name,'date': formattedDate, 'uid': currentUser.uid})
+    // to do: add error handling if no name or date
   }
+
 
   return (
     <form action="" className="form">
@@ -29,7 +32,7 @@ const MilestoneForm = ({db}) => {
         <label htmlFor="date">Date</label>
         <input type="datetime-local" name="date" id="date" onChange={ (e) => setDate(e.target.value)}/>
       </div>
-      <button onSubmit={ (e) => createMilestone(e) }>Add</button>
+      <div onClick={createMilestone}>Add</div>
     </form>
   )
 }

@@ -1,0 +1,14 @@
+.milestones-page {
+ display: flex;
+ flex-direction: column;
+ align-items: center; 
+}
+
+.milestones-page ul {
+  margin: 0;
+  padding: 0;
+}
+
+.milestones-page h2 {
+  margin: 0.5em;
+}
