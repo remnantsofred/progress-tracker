@@ -33,7 +33,6 @@ export const LoginPage = ({currentUser, setCurrentUser}) => {
         id="whenSignedOut" 
         hidden={signOutHidden}>
         <div className='login-page-container'>
-          <h1>Login</h1>
           <button 
             id="signInBtn"
             onClick={() => auth.signInWithPopup(provider)}
@@ -49,7 +48,6 @@ export const LoginPage = ({currentUser, setCurrentUser}) => {
         hidden={signInHidden}>
 
         <div className='login-page-container'>
-          <h1>Progress Tracker</h1>
           <div 
             id="userDetails">
               {currentUser ? `${currentUser.displayName} - ${currentUser.uid}` : ''}

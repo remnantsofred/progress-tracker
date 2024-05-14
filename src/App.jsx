@@ -11,6 +11,7 @@ function App() {
   return (
     <>
       <AuthContext.Provider value={currentUser}>
+        <h1>Progress Tracker</h1>
         <LoginPage currentUser={currentUser} setCurrentUser={setCurrentUser}/>
         { currentUser && <MilestonesPage />}
         { currentUser && <MilestoneForm />}
