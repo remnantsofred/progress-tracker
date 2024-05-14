@@ -1,6 +1,5 @@
 import './MilestonesPage.css';
-import { getFirestore } from "firebase/firestore";
-import { doc, setDoc, addDoc, collection, query, where, getDocs, onSnapshot } from "firebase/firestore"; 
+import { getFirestore, collection, query, where, onSnapshot } from "firebase/firestore";
 import { firebaseApp } from '../../../firebase';
 import Countdown from '../Countdown/Countdown';
 import MilestoneForm from '../MilestoneForm/MilestoneForm';

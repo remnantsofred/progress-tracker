@@ -1,13 +1,11 @@
 import './App.css'
 import { LoginPage } from './components/LoginPage/LoginPage'
 import { MilestonesPage } from './components/MilestonesPage/MilestonesPage'
-import {  useState, useContext } from 'react';
+import {  useState } from 'react';
 import { AuthContext } from './AuthContext';
 
 function App() {
   const [currentUser, setCurrentUser] = useState('');
-  // const user = useContext(AuthContext);
-
   
   return (
     <>
