@@ -24,7 +24,7 @@ export const MilestonesPage = () => {
   });
   
   return (
-    <>
+    <div className='milestones-page'>
       <MilestoneForm db={db} ></MilestoneForm>
       <ul>
           { userMilestones && userMilestones.map((milestone, idx)=> 
@@ -35,6 +35,6 @@ export const MilestonesPage = () => {
             )}
           )}
       </ul>
-    </>
+    </div>
   )
 }

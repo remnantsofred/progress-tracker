@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { firebaseApp } from '../../../firebase';
 
 
-export const LoginPage = ({currentUser, setCurrentUser}) => {
+export const LoginPage = ({currentUser, setCurrentUser, children}) => {
   const [signInHidden, setSignInHidden] = useState(true);
   const [signOutHidden, setSignOutHidden] = useState(false);
   // const [loggedinUser, setCurrentUser] = useState('');
@@ -62,6 +62,7 @@ export const LoginPage = ({currentUser, setCurrentUser}) => {
         </button>
     
       </section>
+      { children }
     </div>
   )
 }
