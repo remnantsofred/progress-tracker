@@ -1,7 +1,7 @@
 import './MilestonesPage.css';
 import { collection, query, where, onSnapshot } from "firebase/firestore";
 import { db } from '../../../firebase';
-import Countdown from '../Countdown/Countdown';
+import Countdown from '../Countdown/Countdown.jsx';
 import { AuthContext } from '../../AuthContext';
 import { useContext, useState } from 'react';
 
