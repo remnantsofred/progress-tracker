@@ -16,5 +16,7 @@ const config = {
 
 
 // initialie firebase and make available via import
-export const firebaseApp = firebase.initializeApp(config)
-export const db = getFirestore(firebaseApp)
+export const firebaseApp = firebase.initializeApp(config);
+export const db = getFirestore(firebaseApp);
+export const auth = firebase.auth();
+export const provider = new firebase.auth.GoogleAuthProvider();
