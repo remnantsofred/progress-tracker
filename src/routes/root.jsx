@@ -1,5 +1,4 @@
 import '../App.css';
-import { LoginPage } from '../components/LoginPage/LoginPage';
 import { MilestonesPage } from '../components/MilestonesPage/MilestonesPage.jsx';
 import { useState } from 'react';
 import { AuthContext } from '../AuthContext';
