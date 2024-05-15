@@ -1,5 +1,7 @@
 import { useState, useEffect} from "react";
 import './Countdown.css'
+import EditRoundedIcon from '@mui/icons-material/EditRounded';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const getTimeLeft = (date) => {
   const now = Date.now();
@@ -49,8 +51,11 @@ const Countdown = ({milestone}) => {
             </div>
           )
         })}
+      <div className="column">
+        <EditRoundedIcon className="milestone-edit-button" fontSize="small" color="action"></EditRoundedIcon>
+        <DeleteIcon className="milestone-delete-button" fontSize="small"></DeleteIcon>
       </div>
-      
+      </div>
       
     </div>
   )
