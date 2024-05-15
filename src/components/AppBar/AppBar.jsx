@@ -8,7 +8,6 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import firebase from 'firebase/compat/app';
 import { useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
 import { auth, provider } from '../../../firebase';
 
 
@@ -16,9 +15,6 @@ import { auth, provider } from '../../../firebase';
 export default function ButtonAppBar({currentUser, setCurrentUser}) {
   const [signInHidden, setSignInHidden] = useState(true);
   const [signOutHidden, setSignOutHidden] = useState(false);
-
-  // set up navigation
-  const navigate = useNavigate();
 
   // Sign in state change
   useEffect(() => {
@@ -41,14 +37,14 @@ export default function ButtonAppBar({currentUser, setCurrentUser}) {
     });
   }, [])
 
-  useEffect(() => {
-    // to do: fix inifite loop of going back to milestones if user
-    if (currentUser) {
-      navigate("/milestones")
-    } else {
-      navigate("/")
-    }
-  }, [currentUser])
+  // useEffect(() => {
+  //   // to do: fix inifite loop of going back to milestones if user
+  //   if (currentUser) {
+  //     navigate("/milestones")
+  //   } else {
+  //     navigate("/")
+  //   }
+  // }, [currentUser])
 
   const handleSignIn = () => {
     auth.signInWithPopup(provider);
