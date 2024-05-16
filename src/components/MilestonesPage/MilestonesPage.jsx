@@ -14,7 +14,7 @@ export const MilestonesPage = () => {
   const unsubscribe = onSnapshot(q, (querySnapshot) => {
     const milestones = [];
     querySnapshot.forEach((doc) => {
-      milestones.push(doc.data());
+      milestones.push(doc);
     });
     setUserMilestones(milestones)
   });
