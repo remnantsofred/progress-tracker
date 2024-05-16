@@ -6,7 +6,8 @@ import { AuthContext } from "../../AuthContext";
 import { ref, remove } from "firebase/database";
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
-import Snackbar from '@mui/material/Snackbar';
+import Modal from "../Modal/Modal";
+import SimpleSnackbar from "../Snackbar/Snackbar";
 
 
 const getTimeLeft = (date) => {
@@ -31,20 +32,19 @@ const getTimeLeft = (date) => {
 const Countdown = ({milestone}) => {
   const [timeLeft, setTimeLeft] = useState(()=> getTimeLeft(milestone.data().date));  
   const currentUser = useContext(AuthContext);
-  const [snackbarStatus, setSnackbarStatus] = useState(false);
+  const [editModal, setEditModal] = useState(false);
+  const [open, setOpen] = useState(false);
+
   
   const handleEdit = () => {
     // to do: update edit logic
+    setEditModal(true);
   }
   
   const handleDelete = async () => {
     console.log(milestone.id, 'milestone id that we deleted', milestone.data().name, 'milestone name')
     await deleteDoc(doc(db, "milestones", milestone.id));
-    // to do: add some sort of confirm stem
-    setSnackbarStatus(true);
-    setTimeout(() => {
-      setSnackbarStatus(false)
-    }, 5000);
+    setOpen(true);
   }
 
   useEffect(() => {
@@ -78,15 +78,17 @@ const Countdown = ({milestone}) => {
         <DeleteIcon className="milestone-delete-button" fontSize="small" color="action" onClick={() => handleDelete()}></DeleteIcon>
       </div>
       </div>
-      {snackbarStatus && <Snackbar
+      <SimpleSnackbar
         open={open}
+        setOpen={setOpen}
         autoHideDuration={6000}
-        // onClose={handleClose}
         message="Milestone deleted"
-        // action={action}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }	
       }
-      />}
+      />
+      <div className="modal-div">
+         {editModal &&  < Modal ></Modal>}  
+      </div>
     </div>
   )
 }
