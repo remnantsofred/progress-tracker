@@ -6,8 +6,8 @@ import { AuthContext } from "../../AuthContext";
 import { ref, remove } from "firebase/database";
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
-import Modal from "../Modal/Modal";
 import SimpleSnackbar from "../Snackbar/Snackbar";
+import EditMilestoneModal from "../EditMilestoneModal/EditMilestoneModal";
 
 
 const getTimeLeft = (date) => {
@@ -87,7 +87,7 @@ const Countdown = ({milestone}) => {
       }
       />
       <div className="modal-div">
-         {editModal &&  < Modal ></Modal>}  
+         {editModal &&  < EditMilestoneModal milestone={milestone}></EditMilestoneModal>}  
       </div>
     </div>
   )
