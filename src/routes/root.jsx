@@ -5,18 +5,21 @@ import { AuthContext } from '../AuthContext';
 import MilestoneForm from '../components/MilestoneForm/MilestoneForm.jsx';
 import { Outlet } from "react-router-dom";
 import BasicMenu from '../components/BasicMenu/BasicMenu.jsx';
+import EditMilestoneModal from '../components/EditMilestoneModal/EditMilestoneModal.jsx';
 
 
 
 export default function Root() {
   const [currentUser, setCurrentUser] = useState('');
+  const [editModal, setEditModal] = useState('');
   
   return (
     <>
       <AuthContext.Provider value={currentUser}>
         <BasicMenu currentUser={currentUser} setCurrentUser={setCurrentUser}></BasicMenu>
         <h1>Progress Tracker</h1>
-        { currentUser && <MilestonesPage />}
+        { editModal !== '' && <EditMilestoneModal milestone={editModal} setEditModal={setEditModal} ></EditMilestoneModal>}
+        { currentUser && <MilestonesPage setEditModal={setEditModal}/>}
         { currentUser && <MilestoneForm />}
         <div id="detail">
           {currentUser && <Outlet />}

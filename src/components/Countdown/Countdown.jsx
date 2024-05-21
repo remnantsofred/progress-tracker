@@ -29,16 +29,14 @@ const getTimeLeft = (date) => {
 }
 
 
-const Countdown = ({milestone}) => {
+const Countdown = ({milestone, setEditModal}) => {
   const [timeLeft, setTimeLeft] = useState(()=> getTimeLeft(milestone.data().date));  
   const currentUser = useContext(AuthContext);
-  const [editModal, setEditModal] = useState(false);
   const [open, setOpen] = useState(false);
 
   
   const handleEdit = () => {
-    // to do: update edit logic
-    setEditModal(true);
+    setEditModal(milestone);
   }
   
   const handleDelete = async () => {
@@ -86,9 +84,6 @@ const Countdown = ({milestone}) => {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }	
       }
       />
-      <div className="modal-div">
-         {editModal &&  < EditMilestoneModal milestone={milestone}></EditMilestoneModal>}  
-      </div>
     </div>
   )
 }
