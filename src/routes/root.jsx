@@ -6,7 +6,8 @@ import MilestoneForm from '../components/MilestoneForm/MilestoneForm.jsx';
 import { Outlet } from "react-router-dom";
 import BasicMenu from '../components/BasicMenu/BasicMenu.jsx';
 import EditMilestoneModal from '../components/EditMilestoneModal/EditMilestoneModal.jsx';
-
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 
 export default function Root() {
@@ -16,14 +17,16 @@ export default function Root() {
   return (
     <>
       <AuthContext.Provider value={currentUser}>
-        <BasicMenu currentUser={currentUser} setCurrentUser={setCurrentUser}></BasicMenu>
-        <h1>Progress Tracker</h1>
-        { editModal !== '' && <EditMilestoneModal milestone={editModal} setEditModal={setEditModal} ></EditMilestoneModal>}
-        { currentUser && <MilestonesPage setEditModal={setEditModal}/>}
-        { currentUser && <MilestoneForm />}
-        <div id="detail">
-          {currentUser && <Outlet />}
-        </div>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <BasicMenu currentUser={currentUser} setCurrentUser={setCurrentUser}></BasicMenu>
+          <h1>Progress Tracker</h1>
+          { editModal !== '' && <EditMilestoneModal milestone={editModal} setEditModal={setEditModal} ></EditMilestoneModal>}
+          { currentUser && <MilestonesPage setEditModal={setEditModal}/>}
+          { currentUser && <MilestoneForm />}
+          <div id="detail">
+            {currentUser && <Outlet />}
+          </div>
+        </LocalizationProvider>
       </AuthContext.Provider >
     </>
   )

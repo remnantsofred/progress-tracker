@@ -8,25 +8,24 @@ import { AuthContext } from '../../AuthContext';
 import { useContext, useState } from 'react';
 import './EditMilestoneModal.css';
 import { getDateTimeLocalFromUnix } from '../../utils/utils';
+import { db } from '../../../firebase';
+import { doc, setDoc } from "firebase/firestore";
+
 
 export default function EditMilestoneModal({milestone, setEditModal}) {
   const [name, setName] = useState(milestone.data().name);
   const [date, setDate] = useState(getDateTimeLocalFromUnix(milestone.data().date));
+  console.log(date, 'date', name, 'name', new Date(date).getTime(), 'new date formatted')
 
   const currentUser = useContext(AuthContext);
 
   const updateMilestone = () => {
-    // const formattedDate = new Date(date).getTime()
-    // // to do: fix date?
-    // const milestoneRef = doc(collection(db, 'milestones'));
-    // setDoc(milestoneRef, {'name': name,'date': formattedDate, 'uid': currentUser.uid})
-    // setName('');
-    // setDate('')
-    // to do: add error handling if no name or date
+    const formattedDate = new Date(date).getTime()
+    const milestoneRef = doc(db, 'milestones', milestone.id);
+    setDoc(milestoneRef, {'name': name,'date': formattedDate, 'uid': currentUser.uid})
+    console.log('inside update milestone', formattedDate, ' formatted date', name, 'name')
+    setEditModal('')
   }
-
-
-
 
   return (
     <div className='edit-milestone-modal'>
@@ -65,10 +64,17 @@ export default function EditMilestoneModal({milestone, setEditModal}) {
             <TextField id="outlined-basic" name="name" label="Name" variant="outlined"onChange={ (e) => setName(e.target.value)} value={name}/>
           </Box>
           {/* </div> */}
-          <div className='column left'>
-            <label htmlFor="date">Date</label>
-            <input type="datetime-local" name="date" id="date" onChange={ (e) => setDate(e.target.value, 'date inside edit')} value={date}/>
-          </div>
+          <Box 
+            component="form"
+            // sx={{
+            //   '& > :not(style)': { m: 1, width: '25ch' },
+            // }}
+            // noValidate
+            
+            >
+            {/* <BasicDateTimePicker></BasicDateTimePicker> */}
+            <input type="datetime-local" name="date" id="date" onChange={ (e) => setDate(e.target.value)} value={date}/>
+          </Box>
           <div onClick={updateMilestone}>Save</div>
         </div>
         </Paper>

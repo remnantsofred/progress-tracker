@@ -1,3 +1,6 @@
+import dayjs from 'dayjs';
+
+
 export const getUnixStringFromDatetimeLocalForm = (date) => {
   return new Date(date).getTime();
 }
@@ -13,4 +16,9 @@ export const getDateTimeLocalFromUnix = (date) => {
   let minutes = dateObj.getMinutes();
   formatted = yyyy + '-' + ('0' + mm).slice(-2) + '-' + ('0' + dd).slice(-2) + 'T' + ('0' + hh).slice(-2) + ':' + ('0' + minutes).slice(-2);
   return formatted;
+}
+
+export const getDateFormattedForDayjs = (date) => {
+  const formatedDate = dayjs(date).format("MMMM DD, YYYY hh:mm A");
+  return formatedDate
 }
