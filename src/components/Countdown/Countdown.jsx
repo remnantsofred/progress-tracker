@@ -1,5 +1,14 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect, useContext} from "react";
 import './Countdown.css'
+import EditRoundedIcon from '@mui/icons-material/EditRounded';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { AuthContext } from "../../AuthContext";
+import { ref, remove } from "firebase/database";
+import { doc, deleteDoc } from "firebase/firestore";
+import { db } from "../../../firebase";
+import SimpleSnackbar from "../Snackbar/Snackbar";
+import EditMilestoneModal from "../EditMilestoneModal/EditMilestoneModal";
+
 
 const getTimeLeft = (date) => {
   const now = Date.now();
@@ -20,22 +29,35 @@ const getTimeLeft = (date) => {
 }
 
 
-const Countdown = ({milestone}) => {
-  const [timeLeft, setTimeLeft] = useState(()=> getTimeLeft(milestone.date));  
+const Countdown = ({milestone, setEditModal}) => {
+  const [timeLeft, setTimeLeft] = useState(()=> getTimeLeft(milestone.data().date));  
+  const currentUser = useContext(AuthContext);
+  const [open, setOpen] = useState(false);
+
   
+  const handleEdit = () => {
+    setEditModal(milestone);
+  }
+  
+  const handleDelete = async () => {
+    console.log(milestone.id, 'milestone id that we deleted', milestone.data().name, 'milestone name')
+    await deleteDoc(doc(db, "milestones", milestone.id));
+    setOpen(true);
+  }
+
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(getTimeLeft(milestone.date))
+      setTimeLeft(getTimeLeft(milestone.data().date))
     }, 1000)
     return ()=> {
       clearInterval(timer)
     }
-  }, [milestone.date]);
+  }, [milestone.data().date]);
 
   return (
     <div className="countdown">
-      {timeLeft[0] === 'future' && <h2>Countdown until {milestone.name}</h2>}
-      {timeLeft[0] === 'past' && <h2>Time since {milestone.name}</h2>}
+      {timeLeft[0] === 'future' && <h2>Countdown until {milestone.data().name}</h2>}
+      {timeLeft[0] === 'past' && <h2>Time since {milestone.data().name}</h2>}
       <div className="content">
         {Object.entries(timeLeft[1]).map(el => {
           const label = el[0];
@@ -49,9 +71,19 @@ const Countdown = ({milestone}) => {
             </div>
           )
         })}
+      <div className="column">
+        <EditRoundedIcon className="milestone-edit-button" fontSize="small" color="action" onClick={() => handleEdit()}></EditRoundedIcon>
+        <DeleteIcon className="milestone-delete-button" fontSize="small" color="action" onClick={() => handleDelete()}></DeleteIcon>
       </div>
-      
-      
+      </div>
+      <SimpleSnackbar
+        open={open}
+        setOpen={setOpen}
+        autoHideDuration={6000}
+        message="Milestone deleted"
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }	
+      }
+      />
     </div>
   )
 }
