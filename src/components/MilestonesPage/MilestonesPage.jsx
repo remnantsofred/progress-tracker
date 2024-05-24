@@ -4,8 +4,9 @@ import { db } from '../../../firebase';
 import Countdown from '../Countdown/Countdown.jsx';
 import { AuthContext } from '../../AuthContext';
 import { useContext, useState } from 'react';
-import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import Switch from '@mui/material/Switch';
+import Typography from '@mui/material/Typography';
 
 
 export const MilestonesPage = ({setEditModal}) => {
@@ -38,21 +39,11 @@ export const MilestonesPage = ({setEditModal}) => {
   
   return (
     <div className='milestones-page'>
-      <h2>Milestones</h2>
-      <Stack direction="row" spacing={2}>
-        <Button 
-          variant="outlined"
-          onClick={() => setOrder(true)}
-          disabled={order}>
-            Sort Ascending
-        </Button>
-        <Button 
-          variant="outlined" 
-          onClick={() => setOrder(false)}
-          disabled={ !order }
-          >
-            Sort Descending
-        </Button>
+      <h2>Milestones</h2>      
+      <Stack direction="row" spacing={1}>
+        <Typography mt={0.5}>Asc</Typography>
+        <Switch defaultChecked onClick={() => setOrder(!order)} label='Sort'></Switch>
+        <Typography mt={0.5}>Dsc</Typography>
       </Stack>
       <ul>
           { userMilestones && userMilestones.map((milestone, idx)=> 

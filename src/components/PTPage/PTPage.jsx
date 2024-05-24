@@ -1,10 +1,20 @@
-// eslint-disable-next-line react/display-name
-export default PTPage = () => {
+import Stack from '@mui/material/Stack';
+import Container from '@mui/material/Container';
+import PTForm from '../PTForm/PTForm';
+
+
+const PTPage = () => {
 
 
   return (
-    <div>
-      PT Page
-    </div>
+    <Container >
+      <h2>Physical Therapy</h2>
+      <PTForm>
+
+        
+      </PTForm>
+    </Container>
   )
 }
+
+export default PTPage;

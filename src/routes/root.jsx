@@ -8,6 +8,7 @@ import BasicMenu from '../components/BasicMenu/BasicMenu.jsx';
 import EditMilestoneModal from '../components/EditMilestoneModal/EditMilestoneModal.jsx';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import PTPage from '../components/PTPage/PTPage.jsx';
 
 
 export default function Root() {
@@ -21,6 +22,7 @@ export default function Root() {
           <BasicMenu currentUser={currentUser} setCurrentUser={setCurrentUser}></BasicMenu>
           <h1>Progress Tracker</h1>
           { editModal !== '' && <EditMilestoneModal milestone={editModal} setEditModal={setEditModal} ></EditMilestoneModal>}
+          { currentUser && <PTPage />}
           { currentUser && <MilestonesPage setEditModal={setEditModal}/>}
           { currentUser && <MilestoneForm />}
           <div id="detail">
