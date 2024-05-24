@@ -21,6 +21,7 @@ const MilestoneForm = () => {
     // to do: add error handling if no name or date
   }
 
+  // to do: create toggle/filter to view only past, only upcoming, sort, etc
 
   return (
     <form action="" className="form">
