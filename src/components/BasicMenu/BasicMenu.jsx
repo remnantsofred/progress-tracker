@@ -23,14 +23,12 @@ export default function BasicMenu({currentUser, setCurrentUser}) {
             setSignOutHidden(true);
             setCurrentUser(user);
             // navigate("/milestones")
-            console.log('i am in logged in')
         } else {
             // not signed in
             setSignInHidden(true);
             setSignOutHidden(false);
             setCurrentUser('')
             // navigate("/")
-            console.log('im in the second one')
         }
     });
   }, [])
