@@ -1,3 +1,7 @@
 .PT-form {
-  border: solid 1px red;
+  width: 400px;
+}
+
+#pt-form-input-row {
+  justify-content: center;
 }

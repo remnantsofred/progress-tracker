@@ -15,15 +15,12 @@ import { doc, setDoc } from "firebase/firestore";
 export default function EditMilestoneModal({milestone, setEditModal}) {
   const [name, setName] = useState(milestone.data().name);
   const [date, setDate] = useState(getDateTimeLocalFromUnix(milestone.data().date));
-  console.log(date, 'date', name, 'name', new Date(date).getTime(), 'new date formatted')
-
   const currentUser = useContext(AuthContext);
 
   const updateMilestone = () => {
     const formattedDate = new Date(date).getTime()
     const milestoneRef = doc(db, 'milestones', milestone.id);
     setDoc(milestoneRef, {'name': name,'date': formattedDate, 'uid': currentUser.uid})
-    console.log('inside update milestone', formattedDate, ' formatted date', name, 'name')
     setEditModal('')
   }
 
