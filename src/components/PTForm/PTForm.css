@@ -5,3 +5,11 @@
 #pt-form-input-row {
   justify-content: center;
 }
+
+.plan-row-stack {
+  justify-content: space-evenly;
+}
+
+.width-half-parent {
+  width: 50%;
+}
