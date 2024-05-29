@@ -14,23 +14,34 @@ import { db } from '../../../firebase';
 
 const PTForm = () => {
   const [planRows, setPlanRows] = useState([]);
+  const [planName, setPlanName] = useState('');
   const currentUser = useContext(AuthContext);
 
   const createPlan = () => {
-    const ptRef = doc(collection(db, 'pt-plans'));
+    const ptRef = doc(collection(db, 'ptPlans'));
     const newPTPlans = [];
     for (let plan of planRows) {
-      const planObj = {'name': plan[0],'goal': plan[1], 'uid': currentUser.uid}
+      const planObj = {'name': plan[0],'goal': plan[1]}
       newPTPlans.push(planObj)
     }
-    setDoc(ptRef, {'uid': currentUser.uid, 'pt-plan': newPTPlans})
+    setDoc(ptRef, {'uid': currentUser.uid, 'name': planName,  'plan': newPTPlans})
     setPlanRows([]);
+    setPlanName('');
     // to do: add error handling if no name or date
+    // to do: also update user's plans 
   }
 
   return (
     <form className='PT-form'>
       <h3>Create PT Plan</h3>
+      <Stack>
+        <TextField 
+          variant="outlined"
+          label="Plan name"
+          value={ planName }
+          onChange={ (e) => setPlanName(e.target.value)}
+          />
+      </Stack>
       { planRows.length > 0 && 
       <>
         <Stack direction='row' spacing={3} className='plan-row-stack'>

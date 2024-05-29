@@ -17,7 +17,7 @@ const MilestoneForm = () => {
     const milestoneRef = doc(collection(db, 'milestones'));
     setDoc(milestoneRef, {'name': name,'date': formattedDate, 'uid': currentUser.uid})
     setName('');
-    setDate('')
+    setDate('');
     // to do: add error handling if no name or date
   }
 
