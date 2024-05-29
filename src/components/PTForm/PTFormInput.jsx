@@ -14,8 +14,8 @@ const PTFormInputRow  = ({planRows, setPlanRows}) => {
   }
 
   return (
-    <Stack direction='row' spacing={3} id='pt-form-input-row'>
-      <div>New item</div>
+    <Stack direction='column' spacing={1.5} id='pt-form-input-row'>
+      <h4>Add new item</h4>
       <TextField 
         variant="outlined"
         label="Item name"
@@ -30,7 +30,7 @@ const PTFormInputRow  = ({planRows, setPlanRows}) => {
         />
       
       <AddIcon 
-        fontSize='small' 
+        fontSize='medium' 
         color='primary'
         onClick={() => handleAdd()}
         />

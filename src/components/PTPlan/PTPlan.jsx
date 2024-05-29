@@ -1,12 +1,14 @@
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 import PTFormItemRow from "../PTForm/PTFormItemRow";
-import Stack from '@mui/material/Stack'
+import Stack from '@mui/material/Stack';
 
 
 const PTPlan = ({ptPlan}) => {
-  console.log(ptPlan.data())
+  
 
   return (
-    <Stack>
+    <Card>
       <p>
         Plan: 
         { ptPlan.data().name }
@@ -31,7 +33,7 @@ const PTPlan = ({ptPlan}) => {
         }) }
       </ul>
       
-    </Stack>
+    </Card>
   )   
 }
 
