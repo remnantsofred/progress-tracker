@@ -1,9 +1,9 @@
 import './MilestonesPage.css';
+import { AuthContext } from '../../AuthContext';
 import { collection, query, where, onSnapshot } from "firebase/firestore";
 import { db } from '../../../firebase';
-import Countdown from '../Countdown/Countdown.jsx';
-import { AuthContext } from '../../AuthContext';
 import { useContext, useState } from 'react';
+import Countdown from '../Countdown/Countdown.jsx';
 import Stack from '@mui/material/Stack';
 import Switch from '@mui/material/Switch';
 import Typography from '@mui/material/Typography';

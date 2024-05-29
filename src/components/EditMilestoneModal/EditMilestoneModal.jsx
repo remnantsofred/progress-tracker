@@ -1,15 +1,14 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
-import TextField from '@mui/material/TextField';
-import { AuthContext } from '../../AuthContext';
-import { useContext, useState } from 'react';
 import './EditMilestoneModal.css';
-import { getDateTimeLocalFromUnix } from '../../utils/utils';
+import { AuthContext } from '../../AuthContext';
 import { db } from '../../../firebase';
 import { doc, setDoc } from "firebase/firestore";
+import { getDateTimeLocalFromUnix } from '../../utils/utils';
+import { useContext, useState } from 'react';
+import Box from '@mui/material/Box';
+import CloseIcon from '@mui/icons-material/Close';
+import IconButton from '@mui/material/IconButton';
+import Paper from '@mui/material/Paper';
+import TextField from '@mui/material/TextField';
 
 
 export default function EditMilestoneModal({milestone, setEditModal}) {

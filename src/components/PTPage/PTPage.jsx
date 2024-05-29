@@ -1,11 +1,10 @@
-import Stack from '@mui/material/Stack';
+import { AuthContext } from '../../AuthContext';
+import { collection, query, where, onSnapshot } from "firebase/firestore";
+import { db } from '../../../firebase';
+import { useContext, useState } from 'react';
 import Container from '@mui/material/Container';
 import PTForm from '../PTForm/PTForm';
-import { useContext, useState } from 'react';
-import { AuthContext } from '../../AuthContext';
 import PTPlan from '../PTPlan/PTPlan';
-import { db } from '../../../firebase';
-import { collection, query, where, onSnapshot } from "firebase/firestore";
 
 
 const PTPage = () => {

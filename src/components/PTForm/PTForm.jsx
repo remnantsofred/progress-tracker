@@ -1,15 +1,16 @@
 import './PTForm.css';
-import TextField from '@mui/material/TextField';
-import AddIcon from '@mui/icons-material/Add';
-import PTFormInputRow from './PTFormInput';
-import Stack from '@mui/material/Stack'
+import { AuthContext } from '../../AuthContext';
+import { db } from '../../../firebase';
+import { doc, setDoc, collection } from "firebase/firestore";
 import { useState, useContext} from 'react';
 import Button from '@mui/material/Button';
-import PTFormItemRow from './PTFormItemRow';
 import Divider from '@mui/material/Divider';
-import { AuthContext } from '../../AuthContext';
-import { doc, setDoc, collection } from "firebase/firestore";
-import { db } from '../../../firebase';
+import PTFormInputRow from './PTFormInput';
+import PTFormItemRow from './PTFormItemRow';
+import Stack from '@mui/material/Stack'
+import Switch from '@mui/material/Switch';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 
 
 const PTForm = () => {
@@ -24,7 +25,7 @@ const PTForm = () => {
       const planObj = {'name': plan[0],'goal': plan[1]}
       newPTPlans.push(planObj)
     }
-    setDoc(ptRef, {'uid': currentUser.uid, 'name': planName,  'plan': newPTPlans})
+    setDoc(ptRef, {'uid': currentUser.uid, 'name': planName,  'plan': newPTPlans, 'active': true })
     setPlanRows([]);
     setPlanName('');
     // to do: add error handling if no name or date
@@ -75,6 +76,8 @@ const PTForm = () => {
           >
 
         </PTFormInputRow>
+        <Typography mt={0.5}>Active</Typography>
+        <Switch defaultChecked onClick={() => setOrder(!order)} label='Sort'></Switch>
         <Button  onClick={createPlan}>Save</Button>
       </Stack>
     </form>

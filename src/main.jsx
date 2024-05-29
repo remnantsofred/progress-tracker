@@ -1,13 +1,13 @@
-import React from 'react'
-import * as ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './index.css'
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import Root from './routes/root.jsx';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import * as ReactDOM from 'react-dom/client'
 import ErrorPage from './error-page.jsx';
+import React from 'react'
+import Root from './routes/root.jsx';
 
 
 const router = createBrowserRouter([

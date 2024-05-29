@@ -1,13 +1,11 @@
-import { useState, useEffect, useContext} from "react";
 import './Countdown.css'
-import EditRoundedIcon from '@mui/icons-material/EditRounded';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { AuthContext } from "../../AuthContext";
-import { ref, remove } from "firebase/database";
-import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
+import { doc, deleteDoc } from "firebase/firestore";
+import { useState, useEffect, useContext} from "react";
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import SimpleSnackbar from "../Snackbar/Snackbar";
-import EditMilestoneModal from "../EditMilestoneModal/EditMilestoneModal";
 
 
 const getTimeLeft = (date) => {

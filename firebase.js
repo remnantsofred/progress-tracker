@@ -1,7 +1,6 @@
-import firebase from 'firebase/compat/app';
-import { getFirestore } from 'firebase/firestore';
-import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
+import { getFirestore } from 'firebase/firestore';
+import firebase from 'firebase/compat/app';
 
 
 const config = {
