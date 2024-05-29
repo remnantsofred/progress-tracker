@@ -16,6 +16,7 @@ import Typography from '@mui/material/Typography';
 const PTForm = () => {
   const [planRows, setPlanRows] = useState([]);
   const [planName, setPlanName] = useState('');
+  const [active, setActive] = useState(true);
   const currentUser = useContext(AuthContext);
 
   const createPlan = () => {
@@ -25,7 +26,7 @@ const PTForm = () => {
       const planObj = {'name': plan[0],'goal': plan[1]}
       newPTPlans.push(planObj)
     }
-    setDoc(ptRef, {'uid': currentUser.uid, 'name': planName,  'plan': newPTPlans, 'active': true })
+    setDoc(ptRef, {'uid': currentUser.uid, 'name': planName,  'plan': newPTPlans, 'active': active })
     setPlanRows([]);
     setPlanName('');
     // to do: add error handling if no name or date
@@ -76,8 +77,10 @@ const PTForm = () => {
           >
 
         </PTFormInputRow>
-        <Typography mt={0.5}>Active</Typography>
-        <Switch defaultChecked onClick={() => setOrder(!order)} label='Sort'></Switch>
+        <Stack direction="row" spacing={1}>
+          <Typography mt={0.5}>Active</Typography>
+          <Switch defaultChecked onClick={() => setActive(!active)} label='Active'></Switch>
+        </Stack>
         <Button  onClick={createPlan}>Save</Button>
       </Stack>
     </form>

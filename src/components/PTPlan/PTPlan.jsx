@@ -7,14 +7,18 @@ const PTPlan = ({ptPlan}) => {
 
   return (
     <Stack>
-      <div>
+      <p>
         Plan: 
         { ptPlan.data().name }
-      </div>
-      <div>
+      </p>
+      <p>
         For: 
         { ptPlan.data().uid }
-      </div>
+      </p>
+      <p>
+        Status: 
+        { ptPlan.data().active ? 'active' : 'inactive'}
+      </p>
       <ul>
         { ptPlan.data().plan.map((item, index)=> {
           return (

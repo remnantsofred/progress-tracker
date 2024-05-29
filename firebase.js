@@ -1,7 +1,7 @@
 import 'firebaseui/dist/firebaseui.css'
 import { getFirestore } from 'firebase/firestore';
+import * as firebaseui from 'firebaseui'
 import firebase from 'firebase/compat/app';
-
 
 const config = {
   apiKey: "AIzaSyBBoiLPu7_MQtORnBFXzuYNx9Usrhw5Hp0",
