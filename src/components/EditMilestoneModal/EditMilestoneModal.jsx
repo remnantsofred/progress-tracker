@@ -1,29 +1,25 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
-import TextField from '@mui/material/TextField';
-import { AuthContext } from '../../AuthContext';
-import { useContext, useState } from 'react';
 import './EditMilestoneModal.css';
-import { getDateTimeLocalFromUnix } from '../../utils/utils';
+import { AuthContext } from '../../AuthContext';
 import { db } from '../../../firebase';
 import { doc, setDoc } from "firebase/firestore";
+import { getDateTimeLocalFromUnix } from '../../utils/utils';
+import { useContext, useState } from 'react';
+import Box from '@mui/material/Box';
+import CloseIcon from '@mui/icons-material/Close';
+import IconButton from '@mui/material/IconButton';
+import Paper from '@mui/material/Paper';
+import TextField from '@mui/material/TextField';
 
 
 export default function EditMilestoneModal({milestone, setEditModal}) {
   const [name, setName] = useState(milestone.data().name);
   const [date, setDate] = useState(getDateTimeLocalFromUnix(milestone.data().date));
-  console.log(date, 'date', name, 'name', new Date(date).getTime(), 'new date formatted')
-
   const currentUser = useContext(AuthContext);
 
   const updateMilestone = () => {
     const formattedDate = new Date(date).getTime()
     const milestoneRef = doc(db, 'milestones', milestone.id);
     setDoc(milestoneRef, {'name': name,'date': formattedDate, 'uid': currentUser.uid})
-    console.log('inside update milestone', formattedDate, ' formatted date', name, 'name')
     setEditModal('')
   }
 

@@ -1,0 +1,18 @@
+.PT-form {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#pt-form-input-row {
+  justify-content: center;
+}
+
+.plan-row-stack {
+  justify-content: space-evenly;
+}
+
+.width-half-parent {
+  width: 50%;
+}

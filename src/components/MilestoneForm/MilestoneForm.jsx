@@ -1,8 +1,8 @@
 import './MilestoneForm.css'
-import { doc, setDoc, collection } from "firebase/firestore";
-import { db } from '../../../firebase';
-import { useState,useContext } from 'react';
 import { AuthContext } from '../../AuthContext';
+import { db } from '../../../firebase';
+import { doc, setDoc, collection } from "firebase/firestore";
+import { useState,useContext } from 'react';
 
 
 
@@ -17,10 +17,11 @@ const MilestoneForm = () => {
     const milestoneRef = doc(collection(db, 'milestones'));
     setDoc(milestoneRef, {'name': name,'date': formattedDate, 'uid': currentUser.uid})
     setName('');
-    setDate('')
+    setDate('');
     // to do: add error handling if no name or date
   }
 
+  // to do: create toggle/filter to view only past, only upcoming, sort, etc
 
   return (
     <form action="" className="form">

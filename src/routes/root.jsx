@@ -1,13 +1,14 @@
 import '../App.css';
-import { MilestonesPage } from '../components/MilestonesPage/MilestonesPage.jsx';
-import { useState } from 'react';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { AuthContext } from '../AuthContext';
-import MilestoneForm from '../components/MilestoneForm/MilestoneForm.jsx';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { MilestonesPage } from '../components/MilestonesPage/MilestonesPage.jsx';
 import { Outlet } from "react-router-dom";
+import { useState } from 'react';
 import BasicMenu from '../components/BasicMenu/BasicMenu.jsx';
 import EditMilestoneModal from '../components/EditMilestoneModal/EditMilestoneModal.jsx';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import MilestoneForm from '../components/MilestoneForm/MilestoneForm.jsx';
+import PTPage from '../components/PTPage/PTPage.jsx';
 
 
 export default function Root() {
@@ -21,6 +22,7 @@ export default function Root() {
           <BasicMenu currentUser={currentUser} setCurrentUser={setCurrentUser}></BasicMenu>
           <h1>Progress Tracker</h1>
           { editModal !== '' && <EditMilestoneModal milestone={editModal} setEditModal={setEditModal} ></EditMilestoneModal>}
+          { currentUser && <PTPage />}
           { currentUser && <MilestonesPage setEditModal={setEditModal}/>}
           { currentUser && <MilestoneForm />}
           <div id="detail">

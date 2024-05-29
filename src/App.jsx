@@ -1,10 +1,10 @@
 import './App.css'
-import { LoginPage } from './components/LoginPage/LoginPage'
-import { MilestonesPage } from './components/MilestonesPage/MilestonesPage.jsx'
 import {  useState } from 'react';
 import { AuthContext } from './AuthContext';
-import MilestoneForm from './components/MilestoneForm/MilestoneForm.jsx';
+import { LoginPage } from './components/LoginPage/LoginPage'
+import { MilestonesPage } from './components/MilestonesPage/MilestonesPage.jsx'
 import ButtonAppBar from './components/AppBar/AppBar';
+import MilestoneForm from './components/MilestoneForm/MilestoneForm.jsx';
 
 function App() {
   const [currentUser, setCurrentUser] = useState('');

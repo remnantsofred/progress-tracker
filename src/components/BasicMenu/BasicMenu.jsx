@@ -1,10 +1,9 @@
+import { auth, provider } from '../../../firebase';
+import { useState, useEffect } from 'react';
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { useState, useEffect } from 'react';
-import { auth, provider } from '../../../firebase';
-import { AuthContext } from '../../AuthContext';
 
 export default function BasicMenu({currentUser, setCurrentUser}) {
   const [signInHidden, setSignInHidden] = useState(true);
@@ -23,14 +22,12 @@ export default function BasicMenu({currentUser, setCurrentUser}) {
             setSignOutHidden(true);
             setCurrentUser(user);
             // navigate("/milestones")
-            console.log('i am in logged in')
         } else {
             // not signed in
             setSignInHidden(true);
             setSignOutHidden(false);
             setCurrentUser('')
             // navigate("/")
-            console.log('im in the second one')
         }
     });
   }, [])
