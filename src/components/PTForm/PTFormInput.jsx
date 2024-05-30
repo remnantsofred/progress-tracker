@@ -6,10 +6,11 @@ import BasicSelect from '../BasicSelect';
 
 const PTFormInputRow  = ({planRows, setPlanRows}) => {
   const [itemName, setItemName] = useState('');
-  const [goal, setGoal] = useState('')
+  const [goal, setGoal] = useState('');
+  const [frequency, setFrequency] = useState('');
   
   const handleAdd = () => {
-    setPlanRows([...planRows, [itemName, goal]]);
+    setPlanRows([...planRows, [itemName, goal, frequency]]);
     setItemName('');
     setGoal('');
   }
@@ -32,6 +33,8 @@ const PTFormInputRow  = ({planRows, setPlanRows}) => {
       <BasicSelect 
         label='Frequency'
         items={ ['daily', 'weekly'] }
+        value={ frequency }
+        setOther={ setFrequency }
         />
       <AddIcon 
         fontSize='medium' 

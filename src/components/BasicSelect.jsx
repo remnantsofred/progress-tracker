@@ -5,11 +5,12 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
-export default function BasicSelect({label, items, id}) {
+export default function BasicSelect({label, items, id, setOther}) {
   const [item, setItem] = React.useState('');
 
   const handleChange = (event) => {
     setItem(event.target.value);
+    setOther(event.target.value);
   };
 
   return (

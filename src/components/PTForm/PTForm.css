@@ -20,6 +20,10 @@
   width: 50%;
 }
 
+.width-third-parent {
+  width: 33%;
+}
+
 .pt-form-close-button {
   position: relative;
   top: -20px;

@@ -26,7 +26,7 @@ const PTForm = ({setPTForm}) => {
     const ptRef = doc(collection(db, 'ptPlans'));
     const newPTPlans = [];
     for (let plan of planRows) {
-      const planObj = {'name': plan[0],'goal': plan[1]}
+      const planObj = {'name': plan[0],'goal': plan[1], 'frequency': plan[2]}
       newPTPlans.push(planObj)
     }
     setDoc(ptRef, {'uid': currentUser.uid, 'name': planName,  'plan': newPTPlans, 'active': active })
@@ -61,12 +61,15 @@ const PTForm = ({setPTForm}) => {
       { planRows.length > 0 && 
       <>
         <Stack direction='row' spacing={3} className='plan-row-stack'>
-            <div className='width-half-parent'>
+            <div className='width-third-parent'>
               Item
             </div>
             <Divider orientation="vertical" flexItem />
-            <div className='width-half-parent'>
+            <div className='width-third-parent'>
               Goal
+            </div>
+            <div className='width-third-parent'>
+              Frequency
             </div>
         </Stack>
         <Divider orientation="horizontal" flexItem />
@@ -79,7 +82,7 @@ const PTForm = ({setPTForm}) => {
             key={index} 
             name={plan[0]}
             goal={plan[1]}
-            
+            frequency={plan[2]}
           />
         )
       })}
