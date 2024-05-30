@@ -2,6 +2,7 @@ import { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField';
+import BasicSelect from '../BasicSelect';
 
 const PTFormInputRow  = ({planRows, setPlanRows}) => {
   const [itemName, setItemName] = useState('');
@@ -28,7 +29,10 @@ const PTFormInputRow  = ({planRows, setPlanRows}) => {
         value={ goal }
         onChange={ (e) => setGoal(e.target.value)}
         />
-      
+      <BasicSelect 
+        label='Frequency'
+        items={ ['daily', 'weekly'] }
+        />
       <AddIcon 
         fontSize='medium' 
         color='primary'
