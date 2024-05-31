@@ -39,18 +39,17 @@ const PTForm = ({setPTForm}) => {
 
   return (
     <Paper className='PT-form' elevation={8} >
-      <Stack direction='row' className='center'>
-        <h3>New PT Plan</h3>
+      <div className='close-button-div'>
         <IconButton
           size="small"
           aria-label="close"
           color="inherit"
           onClick={() => setPTForm(false)}
-          className='pt-form-close-button'
           >
           <CloseIcon fontSize="small" />
         </IconButton>
-      </Stack>
+      </div>
+      <h3>New PT Plan</h3>
       <TextField 
         variant="outlined"
         label="Plan name"

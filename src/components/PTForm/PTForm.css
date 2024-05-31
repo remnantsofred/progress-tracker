@@ -23,14 +23,5 @@
 .width-third-parent {
   width: 33%;
 }
-
-.pt-form-close-button {
-  position: relative;
-  top: -20px;
-  left: 84px;
 }
 
-.PT-form h3 {
-  position: relative;
-  left: 16px;
-}

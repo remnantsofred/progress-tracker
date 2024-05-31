@@ -26,18 +26,17 @@ export default function EditMilestoneModal({milestone, setEditModal}) {
 
   return (
     <Paper elevation={3} className='edit-milestone-modal'>
-      <Stack direction='row'>
-        <h3>Edit milestone</h3>
+      <div className='close-button-div'>
         <IconButton
           size="small"
           aria-label="close"
           color="inherit"
           onClick={() => setEditModal('')}
-          id="edit-milestone-close-button"
-        >
+          >
           <CloseIcon fontSize="small" />
         </IconButton>
-      </Stack>
+      </div>
+      <h3>Edit milestone</h3>
       <Stack spacing={2.5} >
         <TextField id="outlined-basic" name="name" label="Name" variant="outlined"onChange={ (e) => setName(e.target.value)} value={name}/>
         <input type="datetime-local" name="date" id="date" onChange={ (e) => setDate(e.target.value)} value={date}/>

@@ -6,8 +6,10 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { MilestonesPage } from './components/MilestonesPage/MilestonesPage.jsx';
 import BasicMenu from './components/BasicMenu/BasicMenu.jsx';
 import EditMilestoneModal from './components/EditMilestoneModal/EditMilestoneModal.jsx';
-import MilestoneForm from './components/MilestoneForm/MilestoneForm.jsx';
 import PTPage from './components/PTPage/PTPage.jsx';
+import { Routes, Route } from 'react-router-dom';
+import HomePage from './components/HomePage/HomePage.jsx';
+
 
 function App() {
   const [currentUser, setCurrentUser] = useState('');
@@ -16,16 +18,19 @@ function App() {
   return (
     <>
       <AuthContext.Provider value={currentUser}>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <BasicMenu currentUser={currentUser} setCurrentUser={setCurrentUser}></BasicMenu>
-          <h1>Progress Tracker</h1>
-          { editModal !== '' && <EditMilestoneModal milestone={editModal} setEditModal={setEditModal} ></EditMilestoneModal>}
-          { currentUser && <PTPage />}
-          { currentUser && <MilestonesPage setEditModal={setEditModal}/>}
-          { currentUser && <MilestoneForm />}
-          {/* <div id="detail">
-            {currentUser && <Outlet milestone={editModal} setEditModal={setEditModal} />}
-          </div> */}
+        <LocalizationProvider dateAdapter={AdapterDayjs}> 
+          
+            <BasicMenu currentUser={currentUser} setCurrentUser={setCurrentUser} editModal={editModal} setEditModal={setEditModal}></BasicMenu> 
+            { editModal !== '' && <EditMilestoneModal milestone={editModal} setEditModal={setEditModal} ></EditMilestoneModal>}
+
+            <Routes>
+              <Route path="/" element={ <HomePage />  }/>
+                <Route path="milestones" element={ <MilestonesPage setEditModal={setEditModal}/> }/>
+                <Route path="pt" element={ <PTPage />}/>
+                  
+            </Routes>
+          
+
         </LocalizationProvider>
       </AuthContext.Provider >
     </>
