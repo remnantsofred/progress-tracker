@@ -4,6 +4,7 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { Link } from 'react-router-dom';
 
 export default function BasicMenu({currentUser, setCurrentUser}) {
   const [signInHidden, setSignInHidden] = useState(true);
@@ -79,9 +80,17 @@ export default function BasicMenu({currentUser, setCurrentUser}) {
       >
         { currentUser &&  
         ( <div>
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
-            <MenuItem onClick={() => handleLogout()}>Logout</MenuItem> 
+            <MenuItem onClick={handleClose}>
+              <Link to="/">Home</Link>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <Link to="/milestones">Milestones</Link>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <Link to="/pt">PT</Link>
+            </MenuItem>
+            <MenuItem onClick={() => handleLogout()}>Logout
+            </MenuItem> 
           </div> )}
       </Menu>
     </div>

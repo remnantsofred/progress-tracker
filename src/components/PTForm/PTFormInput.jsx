@@ -2,20 +2,22 @@ import { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField';
+import BasicSelect from '../BasicSelect';
 
 const PTFormInputRow  = ({planRows, setPlanRows}) => {
   const [itemName, setItemName] = useState('');
-  const [goal, setGoal] = useState('')
+  const [goal, setGoal] = useState('');
+  const [frequency, setFrequency] = useState('');
   
   const handleAdd = () => {
-    setPlanRows([...planRows, [itemName, goal]]);
+    setPlanRows([...planRows, [itemName, goal, frequency]]);
     setItemName('');
     setGoal('');
   }
 
   return (
-    <Stack direction='row' spacing={3} id='pt-form-input-row'>
-      <div>New item</div>
+    <Stack direction='column' spacing={1.5} id='pt-form-input-row'>
+      <h4>Add new item</h4>
       <TextField 
         variant="outlined"
         label="Item name"
@@ -28,9 +30,14 @@ const PTFormInputRow  = ({planRows, setPlanRows}) => {
         value={ goal }
         onChange={ (e) => setGoal(e.target.value)}
         />
-      
+      <BasicSelect 
+        label='Frequency'
+        items={ ['daily', 'weekly'] }
+        value={ frequency }
+        setOther={ setFrequency }
+        />
       <AddIcon 
-        fontSize='small' 
+        fontSize='medium' 
         color='primary'
         onClick={() => handleAdd()}
         />

@@ -479,3 +479,8 @@ i {
   justify-content: center;
   width: 100%;
 }
+
+.close-button-div {
+  display: flex;
+  justify-content: flex-end;
+}

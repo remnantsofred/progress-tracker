@@ -69,10 +69,10 @@ const Countdown = ({milestone, setEditModal}) => {
             </div>
           )
         })}
-      <div className="column">
-        <EditRoundedIcon className="milestone-edit-button" fontSize="small" color="action" onClick={() => handleEdit()}></EditRoundedIcon>
-        <DeleteIcon className="milestone-delete-button" fontSize="small" color="action" onClick={() => handleDelete()}></DeleteIcon>
-      </div>
+        <div className="column">
+          <EditRoundedIcon className="milestone-edit-button" fontSize="small" color="action" onClick={() => handleEdit()}></EditRoundedIcon>
+          <DeleteIcon className="milestone-delete-button" fontSize="small" color="action" onClick={() => handleDelete()}></DeleteIcon>
+        </div>
       </div>
       <SimpleSnackbar
         open={open}
