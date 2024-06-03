@@ -32,7 +32,7 @@ export const MilestonesPage = ({setEditModal}) => {
         }
       });
     }
-  }, [currentUser])
+  }, [currentUser, order]) 
 
   const sortDateAsc = (milestones) => {
     const sorted = milestones.sort((a, b) => { return a.data().date - b.data().date });
