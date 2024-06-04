@@ -32,7 +32,7 @@ const PTPage = () => {
     <Container className='PT-page'>
       <h2>Physical Therapy</h2>
       <Button 
-        className='create-pt-plan-button'
+        sx={{marginBottom: '15px'}}
         onClick={() => setPTForm(true)}>
           Create PT Plan
       </Button>

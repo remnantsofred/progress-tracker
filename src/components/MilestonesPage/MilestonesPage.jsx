@@ -9,6 +9,9 @@ import Switch from '@mui/material/Switch';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import MilestoneForm from '../MilestoneForm/MilestoneForm.jsx';
+import Grid from '@mui/material/Unstable_Grid2';
+import Box from '@mui/material/Box';
+
 
 
 export const MilestonesPage = ({setEditModal}) => {
@@ -46,9 +49,9 @@ export const MilestonesPage = ({setEditModal}) => {
   
   return (
     <div className='milestones-page'>
-      <h2>Milestones</h2>   
+      <h2>Milestones</h2> 
       <Button 
-        className='create-pt-plan-button'
+        sx={{marginBottom: '15px'}}
         onClick={() => setMilestoneForm(true)}>
           Add New Milestone
       </Button>
