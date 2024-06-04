@@ -37,11 +37,9 @@ export default function EditMilestoneModal({milestone, setEditModal}) {
         </IconButton>
       </div>
       <h3>Edit milestone</h3>
-      <Stack spacing={2.5} >
-        <TextField id="outlined-basic" name="name" label="Name" variant="outlined"onChange={ (e) => setName(e.target.value)} value={name}/>
-        <input type="datetime-local" name="date" id="date" onChange={ (e) => setDate(e.target.value)} value={date}/>
-        <Button onClick={updateMilestone}>Save</Button>
-      </Stack>
+      <TextField id="outlined-basic" name="name" label="Name" variant="outlined"onChange={ (e) => setName(e.target.value)} value={name}/>
+      <input type="datetime-local" name="date" id="date" onChange={ (e) => setDate(e.target.value)} value={date}/>
+      <Button onClick={updateMilestone}>Save</Button>
     </Paper>
   );
 }
