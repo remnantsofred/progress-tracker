@@ -16,7 +16,7 @@ const PTFormInputRow  = ({planRows, setPlanRows}) => {
   }
 
   return (
-    <Stack direction='column' spacing={1.5} id='pt-form-input-row'>
+    <Stack direction='column' spacing={1.5}>
       <h4>Add new item</h4>
       <TextField 
         variant="outlined"
