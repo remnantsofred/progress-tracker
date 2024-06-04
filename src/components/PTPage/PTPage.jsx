@@ -30,7 +30,7 @@ const PTPage = () => {
 
 
   return (
-    <Container className='PT-page'>
+    <div className='PT-page' >
       <h2>Physical Therapy</h2>
       <Button 
         sx={{marginBottom: '15px'}}
@@ -48,7 +48,7 @@ const PTPage = () => {
           )
         })}
       </Stack>
-    </Container>
+    </div>
   )
 }
 
