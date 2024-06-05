@@ -1,14 +1,10 @@
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import PTFormItemRow from "../PTForm/PTFormItemRow";
-import Stack from '@mui/material/Stack';
+import { Card, Stack, Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper  } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import SimpleSnackbar from "../Snackbar/Snackbar";
 import { useState } from 'react';
 import { db } from "../../../firebase";
 import { doc, deleteDoc } from "firebase/firestore";
-import Divider from '@mui/material/Divider';
 
 const PTPlan = ({ptPlan}) => {
   const [open, setOpen] = useState(false);
@@ -23,8 +19,21 @@ const PTPlan = ({ptPlan}) => {
     setOpen(true);
   }
 
+
+  const getRows = () => {
+    const rows = ptPlan.data().plan.map((item, index)=> { 
+      return ({id: index, item: item.name, goal: item.goal, frequency: item.frequency })
+    })
+    return rows;
+  }
+  
+
   return (
     <Card>
+      <div className="row">
+        <EditRoundedIcon className="milestone-edit-button" fontSize="small" color="action" onClick={() => handleEdit()}></EditRoundedIcon>
+        <DeleteIcon className="milestone-delete-button" fontSize="small" color="action" onClick={() => handleDelete()}></DeleteIcon>
+      </div>
       <p>
         Plan: 
         { ptPlan.data().name }
@@ -37,37 +46,32 @@ const PTPlan = ({ptPlan}) => {
         Status: 
         { ptPlan.data().active ? 'active' : 'inactive'}
       </p>
-      <>
-        <Stack direction='row' spacing={3} className='plan-row-stack'>
-            <div className='width-third-parent'>
-              Item
-            </div>
-            <Divider orientation="vertical" flexItem />
-            <div className='width-third-parent'>
-              Goal
-            </div>
-            <div className='width-third-parent'>
-              Frequency
-            </div>
-        </Stack>
-        <Divider orientation="horizontal" flexItem />
-      </>
-      <ul>
-        { ptPlan.data().plan.map((item, index)=> {
-          return (
-            < PTFormItemRow 
-                key={index} 
-                name={item.name}
-                goal={item.goal}
-                frequency={item.frequency}
-            />
-          )
-        }) }
-      </ul>
-      <div className="column">
-        <EditRoundedIcon className="milestone-edit-button" fontSize="small" color="action" onClick={() => handleEdit()}></EditRoundedIcon>
-        <DeleteIcon className="milestone-delete-button" fontSize="small" color="action" onClick={() => handleDelete()}></DeleteIcon>
-      </div>
+      <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 50 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Item</TableCell>
+            <TableCell align="right">Goal</TableCell>
+            <TableCell align="right">Frequency</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {getRows().map((row) => (
+            <TableRow
+              key={row.name}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {row.item}
+              </TableCell>
+              <TableCell align="right">{row.goal}</TableCell>
+              <TableCell align="right">{row.frequency}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+
       <SimpleSnackbar
         open={open}
         setOpen={setOpen}
