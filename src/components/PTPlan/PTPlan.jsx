@@ -35,7 +35,7 @@ const PTPlan = ({ptPlan, setOpen}) => {
   return (
     <Card sx={{display: 'flex', flexDirection: 'column', gap: '1em'}}>
       <div className="row justify-content-flex-end">
-        <EditRoundedIcon className="milestone-edit-button" fontSize="small" color="action" onClick={() => handleEdit()}></EditRoundedIcon>
+        {/* <EditRoundedIcon className="milestone-edit-button" fontSize="small" color="action" onClick={() => handleEdit()}></EditRoundedIcon> */}
         <DeleteIcon className="milestone-delete-button" fontSize="small" color="action" onClick={() => handleDelete()}></DeleteIcon>
       </div>
       <Stack>
