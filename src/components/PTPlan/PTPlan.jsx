@@ -1,10 +1,11 @@
-import { Card, Stack, Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper  } from '@mui/material';
+import { Card, Stack, Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography  } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import SimpleSnackbar from "../Snackbar/Snackbar";
 import { useState } from 'react';
 import { db } from "../../../firebase";
 import { doc, deleteDoc } from "firebase/firestore";
+import { Directions } from '@mui/icons-material';
 
 const PTPlan = ({ptPlan}) => {
   const [open, setOpen] = useState(false);
@@ -26,26 +27,31 @@ const PTPlan = ({ptPlan}) => {
     })
     return rows;
   }
+
+  const getStyle = () => {
+    return ptPlan.data().active ? {color: 'green'} : {color: 'gray'}
+  }
   
 
   return (
-    <Card>
+    <Card sx={{display: 'flex', flexDirection: 'column', gap: '1em'}}>
       <div className="row">
         <EditRoundedIcon className="milestone-edit-button" fontSize="small" color="action" onClick={() => handleEdit()}></EditRoundedIcon>
         <DeleteIcon className="milestone-delete-button" fontSize="small" color="action" onClick={() => handleDelete()}></DeleteIcon>
       </div>
-      <p>
-        Plan: 
-        { ptPlan.data().name }
-      </p>
-      <p>
-        For: 
-        { ptPlan.data().uid }
-      </p>
-      <p>
-        Status: 
+      <Stack>
+        <Typography variant='h6' >
+          Plan Name: 
+        </Typography>
+        { ptPlan.data().name } 
+        <br/>
+        <Typography variant='h6' >
+          Status: 
+        </Typography>
+        <p style={ getStyle() }>
         { ptPlan.data().active ? 'active' : 'inactive'}
-      </p>
+        </p>
+      </Stack>
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: 50 }} aria-label="simple table">
         <TableHead>
