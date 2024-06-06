@@ -7,8 +7,7 @@ import { db } from "../../../firebase";
 import { doc, deleteDoc } from "firebase/firestore";
 import { Directions } from '@mui/icons-material';
 
-const PTPlan = ({ptPlan}) => {
-  const [open, setOpen] = useState(false);
+const PTPlan = ({ptPlan, setOpen}) => {
 
   const handleEdit = () => {
     // setEditModal(milestone);
@@ -35,7 +34,7 @@ const PTPlan = ({ptPlan}) => {
 
   return (
     <Card sx={{display: 'flex', flexDirection: 'column', gap: '1em'}}>
-      <div className="row">
+      <div className="row justify-content-flex-end">
         <EditRoundedIcon className="milestone-edit-button" fontSize="small" color="action" onClick={() => handleEdit()}></EditRoundedIcon>
         <DeleteIcon className="milestone-delete-button" fontSize="small" color="action" onClick={() => handleDelete()}></DeleteIcon>
       </div>
@@ -77,15 +76,6 @@ const PTPlan = ({ptPlan}) => {
         </TableBody>
       </Table>
     </TableContainer>
-
-      <SimpleSnackbar
-        open={open}
-        setOpen={setOpen}
-        autoHideDuration={6000}
-        message="PT Plan deleted"
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }	
-      }
-      />
     </Card>
   )   
 }

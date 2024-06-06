@@ -62,14 +62,14 @@ export const MilestonesPage = ({setEditModal}) => {
         <Typography mt={0.5}>Dsc</Typography>
       </Stack>
       <ul>
-          { userMilestones && userMilestones.map((milestone, idx)=> 
-            { return (<Countdown
-                        milestone={ milestone }
-                        key={idx}
-                        setEditModal={setEditModal}
-                      />
-            )}
+        { userMilestones && userMilestones.map((milestone, idx)=> 
+          { return (<Countdown
+                      milestone={ milestone }
+                      key={idx}
+                      setEditModal={setEditModal}
+                    />
           )}
+        )}
       </ul>
     </div>
   )

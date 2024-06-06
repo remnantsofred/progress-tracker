@@ -8,12 +8,13 @@ import PTForm from '../PTForm/PTForm';
 import PTPlan from '../PTPlan/PTPlan';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-
+import SimpleSnackbar from "../Snackbar/Snackbar";
 
 const PTPage = () => {
   const currentUser = useContext(AuthContext);
   const [userPTPlans, setUserPTPlans] = useState([]);
   const [ptForm, setPTForm] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (currentUser) {
@@ -44,10 +45,19 @@ const PTPage = () => {
           return (
             <PTPlan 
               key={index}
-              ptPlan={plan} />
+              ptPlan={plan}
+              setOpen={setOpen} />
           )
         })}
       </Stack>
+      <SimpleSnackbar
+        open={open}
+        setOpen={setOpen}
+        autoHideDuration={6000}
+        message="PT Plan deleted"
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }	
+      }
+      />
     </div>
   )
 }
