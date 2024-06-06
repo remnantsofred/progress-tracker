@@ -6,7 +6,8 @@ import { useState,useContext } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
 import { Paper } from '@mui/material';
-
+import TextField from '@mui/material/TextField';
+import { Button } from '@mui/material';
 
 const MilestoneForm = ({setMilestoneForm}) => {
   const [name, setName] = useState();
@@ -39,16 +40,14 @@ const MilestoneForm = ({setMilestoneForm}) => {
         </IconButton>
       </div>
       <h3>New milestone</h3>
-      <div className='column left'>
-        <label htmlFor="name">Name</label>
-        <input type="text" name="name" id="name" onChange={ (e) => setName(e.target.value)} value={name}/>
-        
-      </div>
-      <div className='column left'>
-        <label htmlFor="date">Date</label>
+        <TextField 
+        variant="outlined"
+        label="Name"
+        value={ name }
+        onChange={ (e) => setName(e.target.value)}
+        />
         <input type="datetime-local" name="date" id="date" onChange={ (e) => setDate(e.target.value)} value={date}/>
-      </div>
-      <div onClick={createMilestone}>Add</div>
+      <Button onClick={createMilestone}>Add </Button>
     </Paper>
   )
 }

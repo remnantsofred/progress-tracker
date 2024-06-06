@@ -1,11 +1,10 @@
 .PT-page {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  justify-content: center;
   align-items: center;
 }
 
-.create-pt-plan-button {
-  width: 50%;
+.PT-page h2 {
+  margin: 0.5em;
 }
+  

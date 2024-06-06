@@ -9,6 +9,9 @@ import Switch from '@mui/material/Switch';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import MilestoneForm from '../MilestoneForm/MilestoneForm.jsx';
+import Grid from '@mui/material/Unstable_Grid2';
+import Box from '@mui/material/Box';
+
 
 
 export const MilestonesPage = ({setEditModal}) => {
@@ -32,7 +35,7 @@ export const MilestonesPage = ({setEditModal}) => {
         }
       });
     }
-  }, [currentUser])
+  }, [currentUser, order]) 
 
   const sortDateAsc = (milestones) => {
     const sorted = milestones.sort((a, b) => { return a.data().date - b.data().date });
@@ -46,9 +49,9 @@ export const MilestonesPage = ({setEditModal}) => {
   
   return (
     <div className='milestones-page'>
-      <h2>Milestones</h2>   
+      <h2>Milestones</h2> 
       <Button 
-        className='create-pt-plan-button'
+        sx={{marginBottom: '15px'}}
         onClick={() => setMilestoneForm(true)}>
           Add New Milestone
       </Button>
@@ -59,14 +62,14 @@ export const MilestonesPage = ({setEditModal}) => {
         <Typography mt={0.5}>Dsc</Typography>
       </Stack>
       <ul>
-          { userMilestones && userMilestones.map((milestone, idx)=> 
-            { return (<Countdown
-                        milestone={ milestone }
-                        key={idx}
-                        setEditModal={setEditModal}
-                      />
-            )}
+        { userMilestones && userMilestones.map((milestone, idx)=> 
+          { return (<Countdown
+                      milestone={ milestone }
+                      key={idx}
+                      setEditModal={setEditModal}
+                    />
           )}
+        )}
       </ul>
     </div>
   )

@@ -4,6 +4,7 @@ import Snackbar from '@mui/material/Snackbar';
 
 export default function SimpleSnackbar({open, setOpen, message, autoHideDuration, anchorOrigin}) {
 
+
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;

@@ -4,11 +4,12 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function BasicMenu({currentUser, setCurrentUser}) {
   const [signInHidden, setSignInHidden] = useState(true);
   const [signOutHidden, setSignOutHidden] = useState(false);
+  const navigate = useNavigate();
 
   // const currentUser = useContext(AuthContext);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -22,13 +23,13 @@ export default function BasicMenu({currentUser, setCurrentUser}) {
             setSignInHidden(false);
             setSignOutHidden(true);
             setCurrentUser(user);
-            // navigate("/milestones")
+            navigate('/milestones')
         } else {
             // not signed in
             setSignInHidden(true);
             setSignOutHidden(false);
             setCurrentUser('')
-            // navigate("/")
+            navigate("/")
         }
     });
   }, [])
