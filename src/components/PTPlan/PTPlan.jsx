@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { db } from "../../../firebase";
 import { doc, deleteDoc } from "firebase/firestore";
 import { Directions } from '@mui/icons-material';
+import { Link } from 'react-router-dom'
 
 const PTPlan = ({ptPlan, setOpen}) => {
 
@@ -50,6 +51,9 @@ const PTPlan = ({ptPlan, setOpen}) => {
         <p style={ getStyle() }>
         { ptPlan.data().active ? 'active' : 'inactive'}
         </p>
+        <Typography variant='h6' >
+         <Link to={ ptPlan.id }> Track Plan</Link>
+        </Typography>
       </Stack>
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: 50 }} aria-label="simple table">
@@ -61,9 +65,9 @@ const PTPlan = ({ptPlan, setOpen}) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {getRows().map((row) => (
+          {getRows().map((row, index) => (
             <TableRow
-              key={row.name}
+              key={index}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">

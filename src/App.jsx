@@ -9,6 +9,7 @@ import EditMilestoneModal from './components/EditMilestoneModal/EditMilestoneMod
 import PTPage from './components/PTPage/PTPage.jsx';
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './components/HomePage/HomePage.jsx';
+import PTTracker from './components/PTTracker/PTTracker.jsx';
 
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
               <Route path="/" element={ <HomePage />  }/>
                 <Route path="milestones" element={ <MilestonesPage setEditModal={setEditModal}/> }/>
                 <Route path="pt" element={ <PTPage />}/>
+                <Route path="pt/:planId" element={ <PTTracker />}/>
+                
                   
             </Routes>
           

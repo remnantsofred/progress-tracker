@@ -23,7 +23,7 @@ export default function BasicMenu({currentUser, setCurrentUser}) {
             setSignInHidden(false);
             setSignOutHidden(true);
             setCurrentUser(user);
-            navigate('/milestones')
+            // navigate('/milestones')
         } else {
             // not signed in
             setSignInHidden(true);
