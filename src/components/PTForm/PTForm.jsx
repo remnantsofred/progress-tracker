@@ -26,7 +26,7 @@ const PTForm = ({setPTForm}) => {
     const ptRef = doc(collection(db, 'ptPlans'));
     const newPTPlans = [];
     for (let plan of planRows) {
-      const planObj = {'name': plan[0],'goal': plan[1], 'frequency': plan[2]}
+      const planObj = {'name': plan[0],'goal': Number(plan[1]), 'frequency': plan[2]}
       newPTPlans.push(planObj)
     }
     setDoc(ptRef, {'uid': currentUser.uid, 'name': planName,  'plan': newPTPlans, 'active': active })

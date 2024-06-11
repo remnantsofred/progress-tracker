@@ -55,8 +55,7 @@ const PTPage = () => {
         setOpen={setOpen}
         autoHideDuration={6000}
         message="PT Plan deleted"
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }	
-      }
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
       />
     </div>
   )
